@@ -4,7 +4,7 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 
 ## Integrantes
 
-|Nombre|Apellido|Mail|GitHub|
+|Apellido|Nombre|Mail|GitHub|
 |:---|:---|:---|:---|
 |Bernava|JoaquinPedro|joaquinbernava@gmail.com|joacobernava|
 |Luque|FlaviaVanesa|flavia10600@gmail.com|flavia10600|
