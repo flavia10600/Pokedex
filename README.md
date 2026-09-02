@@ -5,6 +5,7 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 ## Integrantes
 
 | Nombre              | Mail                   | GitHub     |
+
 |Bernava Joaquin Pedro|joaquinbernava@gmail.com|joacobernava|
 |Luque Flavia Vanesa  |   flavia10600@gmail.com|flavia10600 |
 |Pezoa Leonardo       |      leonardo@pezoa.com|leopez99    |
