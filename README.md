@@ -6,9 +6,11 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 
 | Nombre              | Mail                   | GitHub     |
 
-|Bernava Joaquin Pedro|joaquinbernava@gmail.com|joacobernava|
-|Luque Flavia Vanesa  |   flavia10600@gmail.com|flavia10600 |
-|Pezoa Leonardo       |      leonardo@pezoa.com|leopez99    |
+|BernavaJoaquinPedro|joaquinbernava@gmail.com | joacobernava|
+
+|LuqueFlaviaVanesa  |   flavia10600@gmail.com|flavia10600 |
+
+|PezoaLeonardo       |      leonardo@pezoa.com|leopez99    |
 
 **Tema elegido:** Pokédex
 
