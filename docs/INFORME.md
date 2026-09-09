@@ -4,8 +4,11 @@ Completar y hacer crecer en cada entrega. No hace falta prosa larga: oraciones c
 
 ## 1. Grupo y tema
 
-- Tema:
-- Por qué lo eligieron (5–8 líneas):
+- Tema: pokedex
+- Por qué lo eligieron (5–8 líneas): 
+Elegimos este tema porque, dentro de las tres opciones disponibles, la que más nos interesó fue la de **Pokédex**. 
+El motivo principal es que nos rememora a nuestra infancia y, además, nos pareció la propuesta más entretenida, 
+ya que conocemos a los personajes con los que vamos a trabajar y nos resulta interesante poder desarrollar el proyecto a partir de ellos.
 
 ## 2. Modelo
 
