@@ -1,11 +1,10 @@
 from src.config import TEMA
-
+from src.dominio.__init__ import * #Traigo el catalogo y la funcion listar_catalogo().
 TEMAS = {
     "pokedex": "Pokédex",
     "recetario": "Recetario",
     "musica": "Biblioteca musical",
 }
-
 
 def pendiente():
     print("Todavía no está implementado. Completar en la entrega que corresponde.")
@@ -38,6 +37,8 @@ def main():
         opcion = input("> ").strip()
         if opcion == "0":
             print("Chau.")
+        if opcion == "1":
+            listar_catalogo()
         elif opcion in {"1", "2", "3", "4", "5", "6", "7", "8", "9"}:
             pendiente()
         else:
@@ -46,3 +47,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

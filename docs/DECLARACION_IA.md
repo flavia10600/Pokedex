@@ -6,7 +6,7 @@ Fecha de esta versión del archivo:
 
 | Entrega | Fecha | Herramienta (ChatGPT, Cursor, Copilot, otra) | Para qué (diseño, código, debug, docs) | Qué pegaron o generaron | Qué reescribieron / revisaron a mano | Integrante |
 | --- | --- | --- | --- | --- | --- | --- |
-| E1 |  |  |  |  |  |  |
+| E1 | 08/09 | deepseek | codigo | Todo el catalogo del .csv en una variable CATALOGO en el archivo __init__.py en la carpeta src/dominio | Probamos si se veian todos los pokemones | Leonardo Pezoa |
 | E2 |  |  |  |  |  |  |
 | E3 |  |  |  |  |  |  |
 | E4 |  |  |  |  |  |  |
