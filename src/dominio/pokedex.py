@@ -51,12 +51,6 @@ class Pokedex:
         self.lista_de_pokemons = CATALOGO   #Se hace una carga de los datos del catalogo de forma "hardcodeada" directamente de la variable CATALOGO
         pass
 
-    def buscar_pokemon_por_id(self,id_pokemon): #Del array CATALOGO buscar y retornar el diccionario  que tenga el ID pedido sino None
-        for dic_pokemon in self.lista_de_pokemons:
-            if dic_pokemon["id"] == id_pokemon: 
-                return dic_pokemon 
-        return None
-
     ###################
     # [ ENTREGA 1 ] -> Modularizado en entrega 2
     ###################
@@ -65,32 +59,38 @@ class Pokedex:
         for item in self.lista_de_pokemons:
             print(f"{item['id']:>3}  {item['nombre']}")
             # Ejemplo de lo que imprime: 1 Bulbasaur (...) 248 Tyranitar
+
+
     
     ###################
     # [ ENTREGA 2 ] -> Caso recursivo
     ###################
 
-
-def siguiente_evolucion(self, evoluciones,id_pokemon):  # A partir de un id_pokemon devuelve el id_pokemon del que seria su version evolucionada
-
-    if evoluciones == []:    #Caso base, si recorri todo entonces devolver none
+    def buscar_pokemon_por_id(self,id_pokemon): #Del array CATALOGO buscar y retornar el diccionario  que tenga el ID pedido sino None
+        for dic_pokemon in self.lista_de_pokemons:
+            if dic_pokemon["id"] == id_pokemon: 
+                return dic_pokemon 
         return None
 
-    if evoluciones[0][0] == id_pokemon:
-        return evoluciones[0][1]    # Resultado de la busqueda: Si encontre el id del pokemon entonces me devuelve el id del pokemon que va a evolucionar
+    def siguiente_evolucion(self, evoluciones,id_pokemon):  # A partir de un id_pokemon devuelve el      del que seria su version evolucionada
 
-    return siguiente_evolucion(self, evoluciones[1:],id_pokemon) #Caso recursivo: Sigo buscando pero descartando el primer array que ya analice.
+        if evoluciones == []:    #Caso base, si recorri todo entonces devolver none
+            return None
+
+        if evoluciones[0][0] == id_pokemon:
+            return evoluciones[0][1]    # Resultado de la busqueda: Si encontre el id del pokemon entonces me devuelve el id del pokemon que va a evolucionar
+
+        return self.siguiente_evolucion(self, evoluciones[1:],id_pokemon) #Caso recursivo: Sigo buscando pero descartando el primer array que ya analice.
 
 
-"""""
-    def siguiente_evolucion(self, evoluciones,id_pokemon): #Debe devolver solo el siguiente ID del que estoy buscando
-        if evoluciones == []:
-            return [] # Caso base, termine de buscar entre todas los arrays
+        # cadena de evoluciones hacia adelante
+    def cadena_evolucion(self,id_pokemon):
+
+        if self.buscar_pokemon_por_id(id_pokemon) is None: # si no existe: caso base
+            return []
+        # None si no evoluciona
+        if self.siguiente_evolucion(id_pokemon) is None: # CASO BASE: última evolución
+            return [id_pokemon]
         
-        if evoluciones[0][1:] == [id_pokemon]:  # Caso recursivo 1: si el array que estoy viendo actualmente su primera pos ([0][0]) es el id ([0][1:]) que busco entonces 
-                                                # agarro ese array (osea [0])
-                                                # y la sumo con la segunda pos del array  ([0][:1] ) encontrado porque esa segunda pos implica que es la evolucion
-            return self.siguiente_evolucion(evoluciones[:1], id_pokemon)
-        
-        return [id_pokemon] + self.siguiente_evolucion(evoluciones, id_pokemon)
-"""""
+        return [id_pokemon] + self.cadena_evolucion(self.siguiente_evolucion(id_pokemon)) # CASO RECURSIVO
+
