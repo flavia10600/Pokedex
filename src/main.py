@@ -30,7 +30,7 @@ def mostrar_menu():
 def main():
 
     dex = Pokedex() # Creo el objeto Pokedex, es la unica vez q se crea
-
+    print(dex.buscar_pokemon_por_id(4))
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
         return

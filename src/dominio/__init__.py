@@ -71,7 +71,3 @@ CATALOGO = [
     {"id": 248, "nombre": "Tyranitar", "tipo1": "Roca", "tipo2": "Siniestro", "hp": 100, "ataque": 134, "defensa": 110, "velocidad": 61, "generacion": 2},
 ]
 
-def listar_catalogo():
-    for item in CATALOGO:
-        print(f"{item['id']:>3}  {item['nombre']}")
-        # Ejemplo de lo que imprime: 1 Bulbasaur (...) 248 Tyranitar
