@@ -1,5 +1,5 @@
 from src.config import TEMA
-from src.dominio.__init__ import * #Traigo el catalogo y la funcion listar_catalogo().
+from src.dominio.__init__ import * #Traigo el catalogo y las evoluciones
 from src.dominio.pokedex import * 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -43,6 +43,8 @@ def main():
             print("Chau.")
         if opcion == "1":
             dex.listar_catalogo()
+        if opcion == "5":
+            dex.mostrar_cadena_de_evolucion(172)
         elif opcion in {"1", "2", "3", "4", "5", "6", "7", "8", "9"}:
             pendiente()
         else:
