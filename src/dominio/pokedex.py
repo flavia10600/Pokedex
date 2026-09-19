@@ -70,12 +70,27 @@ class Pokedex:
     # [ ENTREGA 2 ] -> Caso recursivo
     ###################
 
-    def siguiente_evolucion(self, evoluciones,id_pokemon):
+
+def siguiente_evolucion(self, evoluciones,id_pokemon):  # A partir de un id_pokemon devuelve el id_pokemon del que seria su version evolucionada
+
+    if evoluciones == []:    #Caso base, si recorri todo entonces devolver none
+        return None
+
+    if evoluciones[0][0] == id_pokemon:
+        return evoluciones[0][1]    # Resultado de la busqueda: Si encontre el id del pokemon entonces me devuelve el id del pokemon que va a evolucionar
+
+    return siguiente_evolucion(self, evoluciones[1:],id_pokemon) #Caso recursivo: Sigo buscando pero descartando el primer array que ya analice.
+
+
+"""""
+    def siguiente_evolucion(self, evoluciones,id_pokemon): #Debe devolver solo el siguiente ID del que estoy buscando
         if evoluciones == []:
             return [] # Caso base, termine de buscar entre todas los arrays
         
-        if evoluciones[0][0] == id_pokemon:     # Caso recursivo 1: si el array que estoy viendo actualmente es el id que busco entonces agarro ese array 
-                                                # y la sumo con la segunda pos del array encontrado porque esa segunda pos implica que es la evolucion
-            return siguiente_evolucion(evoluciones[0][0] + evoluciones[:1][1], id_pokemon)
+        if evoluciones[0][1:] == [id_pokemon]:  # Caso recursivo 1: si el array que estoy viendo actualmente su primera pos ([0][0]) es el id ([0][1:]) que busco entonces 
+                                                # agarro ese array (osea [0])
+                                                # y la sumo con la segunda pos del array  ([0][:1] ) encontrado porque esa segunda pos implica que es la evolucion
+            return self.siguiente_evolucion(evoluciones[:1], id_pokemon)
         
-        return siguiente_evolucion(evoluciones[1:], id_pokemon)
+        return [id_pokemon] + self.siguiente_evolucion(evoluciones, id_pokemon)
+"""""
