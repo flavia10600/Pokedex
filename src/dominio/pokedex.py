@@ -1,4 +1,4 @@
-from src.dominio.__init__ import *
+from src.dominio.__init__ import * # Para traer el catalogo de pokemons y los id de las evoluciones
 
 class Pokedex:
     def __init__(self):
