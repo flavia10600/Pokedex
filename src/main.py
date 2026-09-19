@@ -1,5 +1,6 @@
 from src.config import TEMA
 from src.dominio.__init__ import * #Traigo el catalogo y la funcion listar_catalogo().
+from src.dominio.pokedex import * 
 TEMAS = {
     "pokedex": "Pokédex",
     "recetario": "Recetario",
@@ -27,6 +28,9 @@ def mostrar_menu():
 
 
 def main():
+
+    dex = Pokedex() # Creo el objeto Pokedex, es la unica vez q se crea
+
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
         return
@@ -38,7 +42,7 @@ def main():
         if opcion == "0":
             print("Chau.")
         if opcion == "1":
-            listar_catalogo()
+            dex.listar_catalogo()
         elif opcion in {"1", "2", "3", "4", "5", "6", "7", "8", "9"}:
             pendiente()
         else:
