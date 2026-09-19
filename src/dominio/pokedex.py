@@ -26,7 +26,7 @@ class Pokedex:
                 return dic_pokemon 
         return None
 
-    def siguiente_evolucion(self, evoluciones, id_pokemon):  # A partir de un id_pokemon devuelve el      del que seria su version evolucionada
+    def siguiente_evolucion(self, evoluciones, id_pokemon):  # A partir de un id_pokemon devuelve el id del que seria su version evolucionada
 
         if evoluciones == []:    #Caso base, si recorri todo entonces devolver none
             return None
@@ -50,5 +50,5 @@ class Pokedex:
     
     def mostrar_cadena_de_evolucion(self, id_pokemon): # Muestra en el CLI el resultado 
         print(self.cadena_evolucion(id_pokemon))
-    
+      
 

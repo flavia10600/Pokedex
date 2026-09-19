@@ -8,14 +8,14 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 
 | ID | Entrega | Acción (pasos en el CLI) | Datos | Resultado esperado | Resultado | Notas |
 | --- | --- | --- | --- | --- | --- | --- |
-| P01 | E1 | Arrancar el programa y listar catálogo | dataset de la cátedra | lista no vacía, sin traceback |  |  |
-| P02 | E1 | Elegir un ítem inexistente | id = -1 | mensaje claro, el menú sigue |  |  |
-| P03 | E2 | Operación recursiva sobre un ítem con cadena | ver consigna §3.3 | imprime la cadena completa |  |  |
-| P04 | E2 | Operación recursiva sobre un ítem sin derivados |  | solo el ítem (caso base) |  |  |
-| P05 | E3 | Agregar a la colección principal hasta el tope | equipo de 6 / equivalente | el séptimo falla con excepción propia |  |  |
-| P06 | E3 | Desapilar historial vacío | pila vacía | excepción propia, menú sigue |  |  |
-| P07 | E3 | Desencolar cola vacía | cola vacía | excepción propia, menú sigue |  |  |
-| P08 | E3 | Listar colección con el iterador | 2+ ítems | el orden coincide con las inserciones |  |  |
+| P01 | E1 | Arrancar el programa y listar catálogo | dataset de la cátedra | lista no vacía, sin traceback | pasa |  |
+| P02 | E1 | Elegir un ítem inexistente | id = -1 | mensaje claro, el menú sigue | pasa |  |
+| P03 | E2 | Operación recursiva sobre un ítem con cadena | ver consigna §3.3 | imprime la cadena completa | pasa | En el caso de la recursion del pokedex cuando se pide la cadena de evoluciones da la cadena completa|
+| P04 | E2 | Operación recursiva sobre un ítem sin derivados |  | solo el ítem (caso base) | pasa | En el pokedex cuando se busca solo el ID del siguiente pokemon evolucionado|
+| P05 | E3 | Agregar a la colección principal hasta el tope | equipo de 6 / equivalente | el séptimo falla con excepción propia | no corrido |  |
+| P06 | E3 | Desapilar historial vacío | pila vacía | excepción propia, menú sigue | no corrido |  |
+| P07 | E3 | Desencolar cola vacía | cola vacía | excepción propia, menú sigue | no corrido |  |
+| P08 | E3 | Listar colección con el iterador | 2+ ítems | el orden coincide con las inserciones | no corrido |  |
 | P09 | E4 | Búsqueda lineal de un nombre que existe |  | lo encuentra |  |  |
 | P10 | E4 | Búsqueda lineal de un nombre que no existe |  | no encontrado, sin traceback |  |  |
 | P11 | E4 | Búsqueda binaria con catálogo desordenado |  | avisa o reordena; no da un falso hit |  |  |

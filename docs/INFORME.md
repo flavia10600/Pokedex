@@ -52,10 +52,17 @@ Relaciones entre catálogo, colección principal, pila y cola
 
 ## 3. Recursión (E2)
 
-- Función:
-- Caso base:
-- Caso recursivo:
-- Traza de un ejemplo real del dataset:
+Función: cadena_evolucion(pokedex, id). 
+Caso base: si el Pokémon no tiene evolución siguiente → devolver [id]. 
+Caso recursivo: [id] + cadena_evolucion(pokedex, siguiente)
+
+Traza para Bulbasaur (id 1): según EVOLUCIONES, 1→2→3.
+
+* Llamada 1: cadena_evolucion(1) → tiene siguiente (2) → devuelve [1] + cadena_evolucion(2)
+* Llamada 2: cadena_evolucion(2) → tiene siguiente (3) → devuelve [2] + cadena_evolucion(3)
+* Llamada 3: cadena_evolucion(3) → NO tiene siguiente (caso base) → devuelve [3]
+
+Resultado: [1] + [2] + [3] = [1, 2, 3]
 
 ## 4. TADs (E3)
 
