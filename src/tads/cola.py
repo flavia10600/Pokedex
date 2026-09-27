@@ -1,4 +1,5 @@
 from src.excepciones import ColaVaciaError
+from src.tads.lista_enlazada import ListaEnlazada
 
 class Cola:
     """TAD cola implementado sobre ListaEnlazada."""
