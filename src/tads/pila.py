@@ -2,8 +2,8 @@ from src.tads.lista_enlazada import ListaEnlazada
 from src.excepciones import PilaVaciaError
 
 # Se tiene que usar esta clase para manejar la creacion y poner nodos dentro de la lista enlazada.
-"""Pila implementada sobre ListaEnlazada (LIFO)."""
 class Pila: 
+    """Pila implementada sobre ListaEnlazada (LIFO)."""
     def __init__(self):
         self._items = ListaEnlazada()
 
