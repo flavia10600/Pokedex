@@ -57,8 +57,9 @@ if __name__ == "__main__":
     lista = ListaEnlazada()
     lista.insertar_al_inicio("pepe1")
     lista.insertar_al_inicio("pepe2 la venganza")
-    lista.insertar_al_inicio("pepe3 resurrecion")
+    lista.insertar_al_final("pepe3 resurrecion")
     for nombre in lista:
         print(nombre)
+    print("El dato encontrado es:" + lista.buscar("pepe3 resurrecion").get_siguiente().get_dato())
     main()
 
