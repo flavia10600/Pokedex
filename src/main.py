@@ -1,7 +1,8 @@
 from src.config import TEMA
 from src.dominio.__init__ import * #Traigo el catalogo y las evoluciones
+from src.dominio.equipo import Equipo
 from src.dominio.pokedex import pokedex
-from src.tads.lista_enlazada import ListaEnlazada 
+
 TEMAS = {
     "pokedex": "Pokédex",
     "recetario": "Recetario",
@@ -50,5 +51,8 @@ def main():
 
 
 if __name__ == "__main__":
+    equipo = Equipo()
+    equipo.agregar(172)
+    equipo.listar()
     main()
 
