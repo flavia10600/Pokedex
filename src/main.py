@@ -1,6 +1,6 @@
 from src.config import TEMA
 from src.dominio.__init__ import * #Traigo el catalogo y las evoluciones
-from src.dominio.pokedex import *
+from src.dominio.pokedex import pokedex
 from src.tads.lista_enlazada import ListaEnlazada 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -29,9 +29,6 @@ def mostrar_menu():
 
 
 def main():
-
-    dex = Pokedex() # Creo el objeto Pokedex, es la unica vez q se crea
-    print(dex.buscar_pokemon_por_id(4))
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
         return
@@ -43,10 +40,10 @@ def main():
         if opcion == "0":
             print("Chau.")
         if opcion == "1":
-            dex.listar_catalogo()
+            pokedex.listar_catalogo()
         if opcion == "5":
-            dex.mostrar_cadena_de_evolucion(172)
-        elif opcion in {"1", "2", "3", "4", "5", "6", "7", "8", "9"}:
+            pokedex.mostrar_cadena_de_evolucion(172)
+        elif opcion in {"2", "3", "4", "6", "7", "8", "9"}:
             pendiente()
         else:
             print("Opción inválida.")
