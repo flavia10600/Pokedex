@@ -52,3 +52,4 @@ class Pokedex:
         print(self.cadena_evolucion(id_pokemon))
       
 
+pokedex = Pokedex() # Esto lo convierte en singleton a esta clase, solo hay que importarlo y listo.
