@@ -10,3 +10,16 @@ class Pokemon:
         self.defensa = defensa
         self.velocidad = velocidad
         self.generacion = generacion
+
+    def __str__(self):
+        return (
+            f"ID: {self.id}\n"
+            f"Nombre: {self.nombre}\n"
+            f"Tipo 1: {self.tipo1}\n"
+            f"Tipo 2: {self.tipo2}\n"
+            f"HP: {self.hp}\n"
+            f"Ataque: {self.ataque}\n"
+            f"Defensa: {self.defensa}\n"
+            f"Velocidad: {self.velocidad}\n"
+            f"Generación: {self.generacion}"
+        )
