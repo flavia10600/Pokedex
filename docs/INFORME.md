@@ -68,9 +68,9 @@ Resultado: [1] + [2] + [3] = [1, 2, 3]
 
 | TAD | Operaciones | Invariante |
 | --- | --- | --- |
-| ListaEnlazada |  |  |
-| Pila |  |  |
-| Cola |  |  |
+| ListaEnlazada | insertar_al_inicio(dato), insertar_al_final(dato), eliminar(dato), buscar(dato), esta_vacia(), tamanio(), iter() |  |
+| Pila | apilar(dato), desapilar(), ver_tope(), esta_vacia(), tamanio_items() |  |
+| Cola | encolar(dato), desencolar(), ver_frente(), esta_vacia(), tamanio_items() |  |
 
 Dónde se usa cada uno en el dominio.
 
