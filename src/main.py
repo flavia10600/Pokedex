@@ -150,7 +150,7 @@ def main():
             opcion_siete()
             pass
 
-        if opcion == "8": # 8. Cola de turnos de combate (Cola)
+        elif opcion == "8": # 8. Cola de turnos de combate (Cola)
             opcion_ocho(equipo)
         elif opcion in {"2", "3", "4", "9"}:
             pendiente()
