@@ -1,4 +1,5 @@
-from src.dominio.__init__ import * # Para traer el catalogo de pokemons y los id de las evoluciones
+from src.dominio.__init__ import *
+from src.dominio.pokemon import Pokemon # Para traer el catalogo de pokemons y los id de las evoluciones
 
 class Pokedex:
     def __init__(self):
@@ -20,10 +21,10 @@ class Pokedex:
     # [ ENTREGA 2 ] -> Caso recursivo
     ###################
 
-    def buscar_pokemon_por_id(self,id_pokemon): #Del array CATALOGO buscar y retornar el diccionario  que tenga el ID pedido sino None
+    def buscar_pokemon_por_id(self,id_pokemon): #Del array CATALOGO buscar y retornar el Pokemon (como un objeto pokemon)  que tenga el ID pedido sino None
         for dic_pokemon in self.lista_de_pokemons:
             if dic_pokemon["id"] == id_pokemon: 
-                return dic_pokemon 
+                return Pokemon(**dic_pokemon) 
         return None
 
     def siguiente_evolucion(self, evoluciones, id_pokemon):  # A partir de un id_pokemon devuelve el id del que seria su version evolucionada
