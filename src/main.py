@@ -127,6 +127,38 @@ def opcion_siete():
         else:
             print("Opcion invalida")
 
+def opcion_cinco(): # Esto esta hecho con IA para formalizar el ejercicio que ya funcionaba de forma hardcodeada en la entrega anterior
+    # 5. Evolucion de pokemon por ID (Operación recursiva)
+    print()
+    print("=== Cadena de evolucion ===")
+
+    try:
+        id_pokemon = int(input("Escribir ID de pokemon: "))
+    except ValueError:
+        print("Error: el ID tiene que ser un numero entero.")
+        return
+
+    # El array de IDs (es exactamente lo que devuelve la funcion recursiva)
+    ids_evolucion = pokedex.cadena_evolucion(id_pokemon)
+
+    # Si el ID no existe, la cadena viene vacia
+    if ids_evolucion == []:
+        print(f"Error: no existe un pokemon con el ID {id_pokemon}.")
+        return
+
+    print(f"IDs de la cadena de evolucion: {ids_evolucion}")
+
+    if len(ids_evolucion) == 1:
+        print(f"{pokedex.buscar_pokemon_por_id(id_pokemon).nombre} no tiene evoluciones registradas.")
+
+    # A partir de esos IDs, traer el Pokemon de cada uno y mostrarlo con su __str__
+    print()
+    print("Pokemons de la cadena:")
+    for id_evolucion in ids_evolucion:
+        print()
+        print("-------------")
+        print(pokedex.buscar_pokemon_por_id(id_evolucion))
+
 def main():
     equipo = Equipo()
     if TEMA not in TEMAS:
@@ -142,14 +174,11 @@ def main():
         elif opcion == "1":
             pokedex.listar_catalogo()
         elif opcion == "5":
-            pokedex.mostrar_cadena_de_evolucion(172)
+            opcion_cinco()
         elif opcion == "6": # 6. Colección principal (equipo)
-            equipo.listar()
-            # Mostrar el equipo actual -> Este equipo se modifica desde la cola de turnos de combate
+            equipo.listar() # Mostrar el equipo actual -> Este equipo se modifica desde la cola de turnos de combate
         elif opcion == "7": # 7. Historial de pokemons en la pokedex (pila)
             opcion_siete()
-            pass
-
         elif opcion == "8": # 8. Cola de turnos de combate (Cola)
             opcion_ocho(equipo)
         elif opcion in {"2", "3", "4", "9"}:
