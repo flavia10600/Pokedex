@@ -103,7 +103,7 @@ def opcion_siete():
             print("Volviendo al menu principal.")
             return
         
-        if subopcion == "1":
+        elif subopcion == "1":
             print()
             try:
                 id_pokemon = int(input("Escribir ID de pokemon: "))
@@ -114,7 +114,7 @@ def opcion_siete():
             print("Pila actual es: ")
             pokemons_apilados.mostrar_items()
 
-        if subopcion == "2":
+        elif subopcion == "2":
             try:
                 pokemons_apilados.desapilar()
             except PilaVaciaError as error:
@@ -139,14 +139,14 @@ def main():
         opcion = input("> ").strip()
         if opcion == "0":
             print("Chau.")
-        if opcion == "1":
+        elif opcion == "1":
             pokedex.listar_catalogo()
-        if opcion == "5":
+        elif opcion == "5":
             pokedex.mostrar_cadena_de_evolucion(172)
-        if opcion == "6": # 6. Colección principal (equipo)
+        elif opcion == "6": # 6. Colección principal (equipo)
             equipo.listar()
             # Mostrar el equipo actual -> Este equipo se modifica desde la cola de turnos de combate
-        if opcion == "7": # 7. Historial de pokemons en la pokedex (pila)
+        elif opcion == "7": # 7. Historial de pokemons en la pokedex (pila)
             opcion_siete()
             pass
 
