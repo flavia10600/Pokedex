@@ -2,7 +2,8 @@ from src.config import TEMA
 from src.dominio.__init__ import * #Traigo el catalogo y las evoluciones
 from src.dominio.equipo import Equipo
 from src.dominio.pokedex import pokedex
-from src.excepciones import ColeccionLlenaError, ColaVaciaError
+from src.excepciones import ColeccionLlenaError, ColaVaciaError, PilaVaciaError
+from src.tads.pila import Pila
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -84,6 +85,48 @@ def opcion_ocho(equipo: Equipo): # Esto esta hecho con IA. Yo se como funciona t
         else:
             print("Opcion invalida.")
 
+def opcion_siete():
+
+    pokemons_apilados = Pila()
+    print()
+    print("=== Pila de visitas a pokemones ===")
+
+    while True:
+        print()
+        print("1. Apilar pokemon")
+        print("2. Desapilar pokemon")
+        print("0. Volver al menu principal")
+
+        subopcion = input("> ").strip()
+
+        if subopcion == "0":
+            print("Volviendo al menu principal.")
+            return
+        
+        if subopcion == "1":
+            print()
+            try:
+                id_pokemon = int(input("Escribir ID de pokemon: "))
+                pokemons_apilados.apilar(pokedex.buscar_pokemon_por_id(id_pokemon))
+            except ValueError:
+                print("Error: el ID tiene que ser un numero entero.")
+
+            print("Pila actual es: ")
+            pokemons_apilados.mostrar_items()
+
+        if subopcion == "2":
+            try:
+                pokemons_apilados.desapilar()
+            except PilaVaciaError as error:
+                print(f"Error: {error}")
+                print(f"No se puede quitar pokemons en una pila vacia")
+
+            print("Pila actual es: ")
+            pokemons_apilados.mostrar_items()
+
+        else:
+            print("Opcion invalida")
+
 def main():
     equipo = Equipo()
     if TEMA not in TEMAS:
@@ -102,17 +145,14 @@ def main():
             pokedex.mostrar_cadena_de_evolucion(172)
         if opcion == "6": # 6. Colección principal (equipo)
             equipo.listar()
-            print("Elegi la opcion 6")
             # Mostrar el equipo actual -> Este equipo se modifica desde la cola de turnos de combate
-
         if opcion == "7": # 7. Historial de pokemons en la pokedex (pila)
-            # Agregar pokemon y mostrarlo en pila
-            # Quitar pokemon y mostrarlo
+            opcion_siete()
             pass
 
         if opcion == "8": # 8. Cola de turnos de combate (Cola)
             opcion_ocho(equipo)
-        elif opcion in {"2", "3", "4", "7", "9"}:
+        elif opcion in {"2", "3", "4", "9"}:
             pendiente()
         else:
             print("Opción inválida.")

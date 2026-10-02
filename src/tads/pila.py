@@ -30,4 +30,9 @@ class Pila:
 
     def tamanio_items(self):
         return self._items.tamanio()
+
+    def mostrar_items(self):
+        for item in self._items:
+            print(item)
+            print("-------------")
         
