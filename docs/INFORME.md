@@ -95,9 +95,22 @@ n = cantidad de pokémons del catálogo (hoy 70) · m = filas de EVOLUCIONES · 
 
 Mediciones (`time.perf_counter`):
 
+Corridas en la máquina del grupo (i5-11400H, Windows 10, Python 3.11.15) sobre el catálogo completo (n = 70) y una copia ×10 (n = 700). Mediana de 200 corridas para las búsquedas y 20 para los ordenamientos.
+
 | Operación | n | segundos |
 | --- | --- | --- |
-|  |  |  |
+| búsqueda lineal (nombre, peor caso: no está) | 70 | 0.000007 |
+| búsqueda lineal (n × 10) | 700 | 0.000062 |
+| búsqueda binaria (nombre, peor caso: no está) | 70 | 0.000002 |
+| búsqueda binaria (n × 10) | 700 | 0.000005 |
+| ordenar por selección | 70 | 0.000451 |
+| ordenar por selección (n × 10) | 700 | 0.047087 |
+| ordenar por inserción (ya ordenado, mejor caso) | 70 | 0.000018 |
+| ordenar por inserción (n × 10, ya ordenado) | 700 | 0.000190 |
+| ordenar por inserción (al revés, peor caso) | 70 | 0.000547 |
+| ordenar por inserción (n × 10, al revés) | 700 | 0.057162 |
+
+Al agrandar el catálogo ×10, la binaria casi no cambia (×2,5, porque son log n pasos), la lineal crece con n (×9) y los ordenamientos se disparan al cuadrado (×104). La inserción sobre el catálogo ya ordenado es el único caso que crece lineal (×10), que es su mejor caso.
 
 ## 6. Persistencia (E5)
 
