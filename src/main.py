@@ -1,7 +1,10 @@
+from src.algoritmos.busqueda import busqueda_lineal, busqueda_binaria
+from src.algoritmos.ordenamiento import ordenar_seleccion, ordenar_insercion
 from src.config import TEMA
 from src.dominio.__init__ import * #Traigo el catalogo y las evoluciones
 from src.dominio.equipo import Equipo
 from src.dominio.pokedex import pokedex
+from src.dominio.pokemon import Pokemon
 from src.excepciones import ColeccionLlenaError, ColaVaciaError, PilaVaciaError
 from src.tads.pila import Pila
 
@@ -10,6 +13,16 @@ TEMAS = {
     "recetario": "Recetario",
     "musica": "Biblioteca musical",
 }
+
+# [ E4 ] Claves por las que se puede buscar / ordenar el catálogo
+CRITERIOS = {
+    "nombre": lambda p: p["nombre"],
+    "hp": lambda p: p["hp"],
+}
+
+# [ E4 ] Estado de la sesión: por qué criterio quedó ordenado el catálogo.
+# None = sigue en el orden original del archivo (por id) -> la binaria no puede correr.
+estado_orden = {"criterio": None}
 
 def pendiente():
     print("Todavía no está implementado. Completar en la entrega que corresponde.")
@@ -159,6 +172,79 @@ def opcion_cinco(): # Esto esta hecho con IA para formalizar el ejercicio que ya
         print("-------------")
         print(pokedex.buscar_pokemon_por_id(id_evolucion))
 
+def opcion_tres():  # [ E4 - 4.1 y 4.2 ] Buscar
+    print()
+    print("=== Buscar en el catálogo ===")
+    print("1. Nombre (búsqueda lineal)")
+    print("2. Nombre (búsqueda binaria, requiere catálogo ordenado por nombre)")
+    print("0. Volver al menú principal")
+    tipo = input("> ").strip()
+
+    if tipo == "0":
+        return
+    if tipo not in ("1", "2"):
+        print("Opción inválida.")
+        return
+
+    nombre = input("Ingresá el nombre: ").strip()
+
+    if tipo == "1":
+        encontrado = busqueda_lineal(pokedex.lista_de_pokemons, nombre, CRITERIOS["nombre"])
+        modo = "lineal"
+    else:
+        # Regla de 4.2: la binaria solo puede correr sobre el catálogo ordenado POR NOMBRE.
+        # Si quedó ordenado por otro criterio (o sin ordenar), se reordena y se avisa.
+        if estado_orden["criterio"] != "nombre":
+            ordenar_insercion(pokedex.lista_de_pokemons, CRITERIOS["nombre"])
+            estado_orden["criterio"] = "nombre"
+            print("El catálogo no estaba ordenado por nombre: se ordenó automáticamente.")
+        print("Catálogo ordenado por nombre; usando búsqueda binaria.")
+        encontrado = busqueda_binaria(pokedex.lista_de_pokemons, nombre, CRITERIOS["nombre"])
+        modo = "binaria"
+
+    if encontrado is None:
+        print(f"No encontrado: no hay ningún pokémon llamado '{nombre}' (búsqueda {modo}).")
+        return
+
+    print()
+    print(f"Encontrado con búsqueda {modo}:")
+    print(Pokemon(**encontrado))
+
+def opcion_cuatro():  # [ E4 - 4.3 ] Ordenar
+    print()
+    print("=== Ordenar catálogo ===")
+    print("Ordenar por:")
+    print("1. Nombre (alfabético)")
+    print("2. HP (de menor a mayor)")
+    print("0. Volver al menú principal")
+    criterio = input("> ").strip()
+
+    if criterio == "0":
+        return
+    if criterio not in ("1", "2"):
+        print("Opción inválida.")
+        return
+    clave = "nombre" if criterio == "1" else "hp"
+
+    print("Algoritmo:")
+    print("1. Selección (no estable)")
+    print("2. Inserción (estable)")
+    algoritmo = input("> ").strip()
+
+    if algoritmo == "1":
+        ordenar_seleccion(pokedex.lista_de_pokemons, CRITERIOS[clave])
+        nombre_algoritmo = "selección"
+    elif algoritmo == "2":
+        ordenar_insercion(pokedex.lista_de_pokemons, CRITERIOS[clave])
+        nombre_algoritmo = "inserción"
+    else:
+        print("Opción inválida.")
+        return
+
+    estado_orden["criterio"] = clave
+    print(f"Catálogo ordenado por {clave} ({nombre_algoritmo}).")
+    pokedex.listar_catalogo()
+
 def main():
     equipo = Equipo()
     if TEMA not in TEMAS:
@@ -181,7 +267,11 @@ def main():
             opcion_siete()
         elif opcion == "8": # 8. Cola de turnos de combate (Cola)
             opcion_ocho(equipo)
-        elif opcion in {"2", "3", "4", "9"}:
+        elif opcion == "3": # 3. Buscar (E4: lineal y binaria)
+            opcion_tres()
+        elif opcion == "4": # 4. Ordenar (E4: seleccion e insercion)
+            opcion_cuatro()
+        elif opcion in {"2", "9"}:
             pendiente()
         else:
             print("Opción inválida.")
