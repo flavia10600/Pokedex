@@ -76,9 +76,22 @@ Dónde se usa cada uno en el dominio.
 
 ## 5. Complejidad (E4)
 
+La complejidad es cómo crece el tiempo (y el espacio) que necesita una operación cuando crece el tamaño de la entrada, y se escribe con notación O(...) sin depender de la máquina.
+
+n = cantidad de pokémons del catálogo (hoy 70) · m = filas de EVOLUCIONES · k = largo de la cadena de evolución.
+
 | Operación | Tiempo | Espacio | Por qué |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Listar catálogo | O(n) | O(1) | Recorre los n elementos una vez con el iterador. |
+| Buscar pokémon por ID (`buscar_pokemon_por_id`, E2; lo usan las opciones 5, 7 y 8) | O(1) mejor / O(n) peor | O(1) | Recorre el catálogo de a uno; si el id es del primero, sale enseguida. |
+| Búsqueda lineal (nombre) | O(1) mejor / O(n) peor | O(1) | Toca cada elemento hasta encontrarlo o llegar al final; no usa `in` ni `index()`. Funciona con el catálogo en cualquier orden. |
+| Búsqueda binaria (nombre) | O(log n) | O(1) | Cada comparación descarta la mitad del rango: como máximo log₂n pasos. Necesita el catálogo ordenado por nombre. |
+| Ordenar por selección | O(n²) siempre | O(1) | Dos bucles anidados: (n−1) + (n−2) + ... + 1 ≈ n²/2 comparaciones, esté ordenado o no. |
+| Ordenar por inserción | O(n) mejor / O(n²) peor y promedio | O(1) | Si ya está ordenado hace una comparación por elemento; si está al revés, desplaza todo. |
+| Cadena de evolución (`cadena_evolucion`, E2) | O(k·(n+m)) | O(k) + las copias del slicing | Cada llamada busca el id en el catálogo (O(n)) y `siguiente_evolucion` recorre EVOLUCIONES cortando la lista (O(m) por nivel, y el corte copia); quedan k marcos de recursión. |
+| Apilar / desapilar (pila) | O(1) | O(1) | Trabajan sobre la cabeza de la lista enlazada, sin recorrerla. |
+| Encolar (cola) | O(n) | O(1) | `insertar_al_final` recorre la lista hasta el último nodo para engancharlo. |
+| Desencolar (cola) | O(1) | O(1) | Saca la cabeza de la lista enlazada: no recorre nada. |
 
 Mediciones (`time.perf_counter`):
 
